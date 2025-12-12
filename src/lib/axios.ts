@@ -1,11 +1,3 @@
-/**
- * Axios Instance with Interceptors
- *
- * CLAUDE.md 규칙:
- * - 서버 오류는 Error 상속 class로 변환해 throw
- * - AxiosError 그대로 노출 금지
- */
-
 import axios, { AxiosError } from 'axios';
 import {
   ApiError,
@@ -15,9 +7,6 @@ import {
   UnknownError,
 } from '@/domains/ui/api/errors';
 
-/**
- * Axios Instance
- */
 export const apiClient = axios.create({
   baseURL: '/api',
   timeout: 10000,
@@ -26,13 +15,9 @@ export const apiClient = axios.create({
   },
 });
 
-/**
- * Response Interceptor - 에러 처리
- */
 apiClient.interceptors.response.use(
   (response) => response,
   (error: AxiosError) => {
-    // Network Error
     if (!error.response) {
       throw new UnknownError('Network error occurred');
     }
@@ -41,7 +26,6 @@ apiClient.interceptors.response.use(
     const errorMessage =
       (data as { message?: string })?.message || `HTTP Error: ${status}`;
 
-    // HTTP Status Code별 에러 변환
     switch (status) {
       case 401:
         throw new UnauthorizedError(errorMessage);

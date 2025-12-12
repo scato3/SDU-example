@@ -1,11 +1,3 @@
-/**
- * Error Fallback Component
- *
- * CLAUDE.md 규칙:
- * - instanceof 분기로 에러 타입별 처리
- * - UI 렌더링만 수행, 비즈니스 로직 금지
- */
-
 import { FallbackProps } from 'react-error-boundary';
 import {
   UnauthorizedError,
@@ -16,7 +8,6 @@ import {
 import styles from './ErrorFallback.module.scss';
 
 export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
-  // Unauthorized Error
   if (error instanceof UnauthorizedError) {
     return (
       <div className={styles.errorContainer}>
@@ -34,7 +25,6 @@ export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
     );
   }
 
-  // Forbidden Error
   if (error instanceof ForbiddenError) {
     return (
       <div className={styles.errorContainer}>
@@ -52,7 +42,6 @@ export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
     );
   }
 
-  // API Error
   if (error instanceof ApiError) {
     return (
       <div className={styles.errorContainer}>
@@ -70,7 +59,6 @@ export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
     );
   }
 
-  // Unknown Error
   if (error instanceof UnknownError) {
     return (
       <div className={styles.errorContainer}>
@@ -85,7 +73,6 @@ export const ErrorFallback = ({ error, resetErrorBoundary }: FallbackProps) => {
     );
   }
 
-  // Default Error (including ZodError, etc.)
   return (
     <div className={styles.errorContainer}>
       <div className={styles.errorContent}>

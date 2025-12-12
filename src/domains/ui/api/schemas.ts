@@ -1,21 +1,9 @@
-/**
- * Zod Schemas for UI Domain
- *
- * 공통 스키마를 재사용하여 중복 제거
- */
-
 import { z } from 'zod';
 
-/**
- * Common Schemas
- */
 const BaseComponentSchema = z.object({
   id: z.string(),
 });
 
-/**
- * Component Type Schemas
- */
 export const HeroComponentSchema = BaseComponentSchema.extend({
   type: z.literal('hero'),
   data: z.object({
@@ -76,9 +64,6 @@ export const ButtonGroupComponentSchema = BaseComponentSchema.extend({
   }),
 });
 
-/**
- * Union Schema
- */
 export const UIComponentSchema = z.discriminatedUnion('type', [
   HeroComponentSchema,
   CardComponentSchema,
@@ -87,9 +72,6 @@ export const UIComponentSchema = z.discriminatedUnion('type', [
   ButtonGroupComponentSchema,
 ]);
 
-/**
- * Screen Response Schema
- */
 export const UIScreenResponseSchema = z.object({
   screenId: z.string(),
   title: z.string(),
