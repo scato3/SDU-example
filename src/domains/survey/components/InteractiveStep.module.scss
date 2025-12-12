@@ -1,0 +1,98 @@
+.interactive {
+  width: 100%;
+}
+
+.textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+  resize: vertical;
+  margin-top: 16px;
+  transition: border-color 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #1976d2;
+  }
+}
+
+.ratingInput {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.star {
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: #e0e0e0;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.starActive {
+  color: #ffd700;
+}
+
+.listTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.checkboxList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.checkboxItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+
+  &:hover {
+    background: #e8e8e8;
+  }
+
+  input[type='checkbox'] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}
+
+.checkboxIcon {
+  font-size: 1.5rem;
+}
+
+.checkboxText {
+  flex: 1;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.error {
+  margin-top: 8px;
+  padding: 12px;
+  background: #ffebee;
+  color: #d32f2f;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
